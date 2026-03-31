@@ -8,6 +8,6 @@ Next.js app for the **payments hub dashboard** (KPIs, revenue, activity). Source
 cd my-app && npm install && npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) → redirects to `/payment-hub/active`. See `my-app/app/payment-hub/README.md` for routes.
+Open [http://localhost:3000](http://localhost:3000) → redirects to `/payment-hub`. See `my-app/app/payment-hub/README.md` for routes.
 
 **Reuse this UI shell in other apps:** see [`docs/reusing-this-layout.md`](docs/reusing-this-layout.md).

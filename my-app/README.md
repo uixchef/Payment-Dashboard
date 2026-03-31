@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-**Scope:** Payment Hub **dashboard** only (`/payment-hub/active`). Onboarding / first-run UX is maintained in a **separate repository** (add its link in the root `README.md` when it exists).
+**Scope:** Payment Hub **dashboard** only (`/payment-hub`). Onboarding / first-run UX is maintained in a **separate repository** (add its link in the root `README.md` when it exists).
 
 ## Getting Started
 

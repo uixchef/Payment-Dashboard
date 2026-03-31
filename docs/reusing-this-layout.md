@@ -2,7 +2,7 @@
 
 ## What “the layout” is
 
-1. **App shell:** `Sidebar` + `Topbar` + main column chrome (see `app/payment-hub/active/page.tsx`).
+1. **App shell:** `Sidebar` + `Topbar` + main column chrome (see `app/payment-hub/page.tsx`).
 2. **Root layout:** fonts + `globals.css` on `body` (`app/layout.tsx`).
 3. **Dependencies:** `components/payment-hub/*`, `components/ui/*` (shadcn), `lib/utils.ts` (`cn`), Tailwind + CSS variables in `app/globals.css`.
 

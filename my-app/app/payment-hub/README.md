@@ -2,9 +2,8 @@
 
 | Route | Experience |
 |-------|------------|
-| **`/payment-hub/active`** | Dashboard (KPIs, charts, activity) |
-| **`/payment-hub`** | Redirects → **`/payment-hub/active`** |
+| **`/payment-hub`** | Dashboard (KPIs, charts, activity) |
 
-App root **`/`** redirects → **`/payment-hub/active`**.
+App root **`/`** redirects → **`/payment-hub`**.
 
 Onboarding / first-run flows live in a **separate project** (not this repo).
