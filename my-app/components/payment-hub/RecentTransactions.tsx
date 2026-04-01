@@ -1,7 +1,7 @@
 "use client"
 
 const recentTransactionsShellClass =
-  "flex w-full flex-col gap-0 overflow-hidden rounded-[4px] border border-[#d0d5dd] bg-white p-0 shadow-[0px_1px_3px_0px_rgba(16,24,40,0.1),0px_1px_2px_0px_rgba(16,24,40,0.06)]"
+  "flex h-full min-h-0 w-full flex-col gap-0 overflow-hidden rounded-[4px] border border-[#d0d5dd] bg-white p-0 shadow-[0px_1px_3px_0px_rgba(16,24,40,0.1),0px_1px_2px_0px_rgba(16,24,40,0.06)]"
 
 const recentTransactions: { activity: string; amount: string }[] = [
   { activity: "Invoice #INV-2024-089 paid by Acme Corp", amount: "2,450.00" },
@@ -48,18 +48,28 @@ const txCellActivity = `${txTableCell} min-w-0`
 
 const txCellAmount = `${txTableCell} text-right tabular-nums`
 
-/** Sticky header cells; `border-separate` keeps `position:sticky` reliable on `<th>`. */
+/** Header row cells (not in scroll region); match former sticky header styling without sticky. */
 const thBase =
-  "sticky top-0 z-10 h-9 border-b border-[#d0d5dd] bg-[#f2f4f7] px-3 align-middle"
+  "h-9 border-b border-[#d0d5dd] bg-[#f2f4f7] px-3 align-middle"
+
+const tableFixed =
+  "w-full min-w-0 table-fixed border-separate border-spacing-0 text-base"
+
+const colgroup = (
+  <colgroup>
+    <col className="min-w-0" />
+    <col className="w-[196px]" />
+  </colgroup>
+)
 
 /**
- * Figma 517:144328 — toolbar + bordered grid table; scroll only moves rows (header sticky).
+ * Figma 517:144328 — toolbar + header row fixed; only tbody scrolls.
  */
 export default function RecentTransactions() {
   return (
-    <div className="h-full min-h-0 min-w-0 w-full">
+    <div className="flex h-full min-h-0 min-w-0 w-full flex-col">
       <div
-        className={`${recentTransactionsShellClass} h-full min-h-0`}
+        className={`${recentTransactionsShellClass}`}
         role="region"
         aria-label="Recent transactions table"
       >
@@ -81,71 +91,75 @@ export default function RecentTransactions() {
         </div>
 
         <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden border-x border-b border-[#eaecf0] bg-white">
-          <div className="isolate min-h-0 flex-1 overflow-y-auto overflow-x-auto overscroll-contain">
-            <table className="table-fixed min-w-0 w-full border-separate border-spacing-0 text-base">
-              <caption className="sr-only">
-                Recent transactions: activity and amount in USD
-              </caption>
-              <colgroup>
-                <col className="min-w-0" />
-                <col className="w-[196px]" />
-              </colgroup>
-              <thead>
-                <tr>
-                  <th
-                    scope="col"
-                    className={`${thBase} min-w-0 border-r border-[#d0d5dd] text-left`}
-                  >
-                    <div className="flex min-w-0 items-center gap-1">
-                      <img
-                        src="/icons/recent-transactions/slab-serif.svg"
-                        alt=""
-                        width={20}
-                        height={20}
-                        className="size-5 shrink-0"
-                        aria-hidden
-                      />
-                      <span className="min-w-0 flex-1 truncate text-base font-semibold leading-6 text-[#101828]">
-                        Activity
-                      </span>
-                      <img
-                        src="/icons/recent-transactions/filter-lines.svg"
-                        alt=""
-                        width={14}
-                        height={14}
-                        className="size-3.5 shrink-0"
-                        aria-hidden
-                      />
-                    </div>
-                  </th>
-                  <th
-                    scope="col"
-                    className={`${thBase} w-[196px] min-w-[196px] max-w-[196px] text-right`}
-                  >
-                    <div className="flex items-center justify-end gap-1">
-                      <img
-                        src="/icons/recent-transactions/credit-card.svg"
-                        alt=""
-                        width={20}
-                        height={20}
-                        className="size-5 shrink-0"
-                        aria-hidden
-                      />
-                      <span className="truncate text-base font-semibold leading-6 text-[#101828]">
-                        Amount (in USD)
-                      </span>
-                      <img
-                        src="/icons/recent-transactions/filter-lines.svg"
-                        alt=""
-                        width={14}
-                        height={14}
-                        className="size-3.5 shrink-0"
-                        aria-hidden
-                      />
-                    </div>
-                  </th>
-                </tr>
-              </thead>
+          <span className="sr-only">
+            Recent transactions: activity and amount in USD
+          </span>
+
+          {/* Column headers — outside scroll; do not move when body scrolls */}
+          <table className={tableFixed}>
+            {colgroup}
+            <thead>
+              <tr>
+                <th
+                  scope="col"
+                  className={`${thBase} min-w-0 border-r border-[#d0d5dd] text-left`}
+                >
+                  <div className="flex min-w-0 items-center gap-1">
+                    <img
+                      src="/icons/recent-transactions/slab-serif.svg"
+                      alt=""
+                      width={20}
+                      height={20}
+                      className="size-5 shrink-0"
+                      aria-hidden
+                    />
+                    <span className="min-w-0 flex-1 truncate text-base font-semibold leading-6 text-[#101828]">
+                      Activity
+                    </span>
+                    <img
+                      src="/icons/recent-transactions/filter-lines.svg"
+                      alt=""
+                      width={14}
+                      height={14}
+                      className="size-3.5 shrink-0"
+                      aria-hidden
+                    />
+                  </div>
+                </th>
+                <th
+                  scope="col"
+                  className={`${thBase} w-[196px] min-w-[196px] max-w-[196px] border-[#d0d5dd] text-right`}
+                >
+                  <div className="flex items-center justify-end gap-1">
+                    <img
+                      src="/icons/recent-transactions/credit-card.svg"
+                      alt=""
+                      width={20}
+                      height={20}
+                      className="size-5 shrink-0"
+                      aria-hidden
+                    />
+                    <span className="truncate text-base font-semibold leading-6 text-[#101828]">
+                      Amount (in USD)
+                    </span>
+                    <img
+                      src="/icons/recent-transactions/filter-lines.svg"
+                      alt=""
+                      width={14}
+                      height={14}
+                      className="size-3.5 shrink-0"
+                      aria-hidden
+                    />
+                  </div>
+                </th>
+              </tr>
+            </thead>
+          </table>
+
+          {/* Body only — scroll */}
+          <div className="min-h-0 flex-1 overflow-y-auto overflow-x-auto overscroll-contain">
+            <table className={tableFixed}>
+              {colgroup}
               <tbody>
                 {recentTransactions.map((row) => (
                   <tr key={row.activity} className="bg-white">
