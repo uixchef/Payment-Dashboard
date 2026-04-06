@@ -166,5 +166,4 @@ The onboarding repository owns **first-run** flows; this repository owns **stead
 
 ## License
 
-**Proprietary — internal HighLevel use only.**  
-Not licensed for public redistribution or external use unless explicitly granted by HighLevel.
+This project is proprietary and intended for internal use only. Unauthorized copying, distribution, or use is prohibited.
