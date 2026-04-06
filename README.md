@@ -15,7 +15,7 @@ Payments historically behaved like a **feature cluster tucked behind invoices**.
 The redesign introduces a **dual experience system**:
 
 - **Active user experience (this repo):** a centralized operational dashboard for accounts with real transaction and subscription data.
-- **New user experience (separate repo):** guided onboarding, setup, and activation—optimized for comprehension and completion, not dense monitoring.
+- **New user experience ([separate repo](https://github.com/uixchef/Payment-Dashboard-New-User)):** guided onboarding, setup, and activation—optimized for comprehension and completion, not dense monitoring.
 
 Together, they move payments from an **invoice-first mental model** to a **payments hub** that matches how operators actually run the business day to day.
 
@@ -150,7 +150,7 @@ Replace this subsection with image links or a short Loom when available.
 ## Related repositories
 
 - **Active user dashboard (this repo):** [Payment-Dashboard-Active-User](https://github.com/uixchef/Payment-Dashboard-Active-User)
-- **New user (onboarding):** Explore the onboarding experience → [INSERT NEW USER REPO LINK]
+- **New user (onboarding):** Explore the onboarding experience → [Payment-Dashboard-New-User](https://github.com/uixchef/Payment-Dashboard-New-User)
 
 The onboarding repository owns **first-run** flows; this repository owns **steady-state operations** after value is live in the account.
 
